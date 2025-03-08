@@ -1,0 +1,36 @@
+<div class="sidenav">
+    <p-card
+    [style]="{ outline: '0.5px solid gainsboro', backgroundColor: 'color-mix(in srgb, var(--p-surface-50) calc(100%* var(--tw-bg-opacity, 1)), transparent)'}">
+        <div class="avatar">
+            <p-avatar image="/logo.png" size="xlarge" shape="circle" />
+        </div>
+        <p-divider />
+        <div class="menu-div">
+            @for (item of menuitems; track $index){
+            <div class="menu-item" [routerLink]="item.routerLink" routerLinkActive="active-menu">
+          
+                <i [routerLink]="item.routerLink"  [ngClass]="item.icon" [pTooltip]="item.label"tooltipPosition="right"></i>
+                
+            </div>
+            }
+        </div>
+
+        <p-divider />
+
+        <div class="menu-div">
+            <div routerLink="#" class="menu-item" routerLinkActive="active-menu" >
+                <i class="pi pi-sign-out"    pTooltip="Log Out"tooltipPosition="right"></i>
+            </div>
+
+        </div>
+
+        <div class="avatar">
+            <p-avatar image="https://avatars.githubusercontent.com/u/117423632?v=4" size="normal" shape="circle"/>
+        </div>
+
+
+        <!-- <p-avatar image="https://avatars.githubusercontent.com/u/117423632?v=4" size="xlarge" shape="circle" /> -->
+
+    </p-card>
+
+</div>

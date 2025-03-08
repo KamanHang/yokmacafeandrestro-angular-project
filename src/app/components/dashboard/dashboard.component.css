@@ -1,0 +1,7 @@
+.main-dash-div{
+    display: flex;
+    justify-content: flex-start;
+    height: 98vh;
+    background-color: color-mix(in srgb, var(--p-surface-50) calc(100%* var(--tw-bg-opacity, 1)), transparent);
+
+}

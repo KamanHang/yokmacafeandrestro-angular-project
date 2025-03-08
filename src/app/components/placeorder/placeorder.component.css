@@ -1,0 +1,116 @@
+.main-place-order-div {
+    display: flex;
+    justify-content: flex-start;
+    height: 100%;
+    /* background-color: color-mix(in srgb, var(--p-surface-50) calc(100%* var(--tw-bg-opacity, 1)), transparent); */
+
+}
+
+.order-div {
+    border-radius: 10px;
+    width: 70%;
+    /* margin-right: 1rem; */
+    padding: 1rem;
+    /* outline: 0.5px solid gainsboro; */
+}
+
+.total-div {
+    /* border-radius: 10px; */
+    width: 30%;
+    /* outline: 0.5px solid gainsboro; */
+    padding: 1rem  ;
+
+}
+
+.coffee-field {
+    display: flex;
+    justify-content: space-around;
+}
+
+.coffee-quantity {
+    display: flex;
+    justify-content: center;
+}
+
+
+.img-black {
+    height: 10vh;
+    width: 4.5rem;
+    overflow: auto;
+}
+
+
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: space-between;
+}
+
+.item-card {
+    width: calc(33.33% - 16px);
+    padding: 1rem;
+    border-radius: 12px;
+    outline: 0.5px solid gainsboro;
+    box-sizing: border-box;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .item-card {
+        width: calc(50% - 16px);
+    }
+}
+
+@media (max-width: 480px) {
+    .item-card {
+        width: 100%;
+    }
+}
+
+.image-div {
+    display: flex;
+    justify-content: center;
+}
+
+.product-details  {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quantity-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+    min-width: 30px;
+    text-align: center;
+}
+
+.product-action {
+    display: flex;
+    justify-content: space-around
+}
+
+.selected-item{
+    display: flex;
+    justify-content: space-between;
+}
+
+.total-price{
+    margin: 2rem;
+    display: flex;
+    justify-content: end;
+}
+
+
+.placeorder-div{
+    display: flex;
+    justify-content: center;
+    margin: 2rem;
+}
+

@@ -1,0 +1,203 @@
+<div class="main-place-order-div">
+    <p-toast position="top-center" key="bl" />
+
+    <div class="order-div">
+
+        <div class="order-fields">
+
+            <p-fieldset legend="Choose Table">
+                <p-select [options]="tables" [(ngModel)]="selectedTable" optionLabel="name" placeholder="Select a Table"
+                    class="w-full md:w-56" />
+            </p-fieldset>
+
+
+
+
+            <p-fieldset legend="Coffee">
+                <div class="card">
+                    <p-tabs value="0">
+                        <p-tablist>
+                            <p-tab [style]="{color: 'black'}" value="0">Black Coffee</p-tab>
+                            <p-tab [style]="{color: 'black'}" value="1">Milk Coffee</p-tab>
+                            <p-tab [style]="{color: 'black'}" value="2">Iced Coffee</p-tab>
+                            <p-tab [style]="{color: 'black'}" value="3">Manual Coffee</p-tab>
+                            <p-tab [style]="{color: 'black'}" value="4">Non Coffee</p-tab>
+
+                        </p-tablist>
+                        <p-tabpanels>
+                            <p-tabpanel value="0">
+                                <div class="product-container">
+
+                                    @for (product of blackCoffee; track $index){
+                                    <div class="item-card">
+                                        <div>
+                                            <div class="image-div">
+                                                <img [src]="product.image" [alt]="product.name" class="img-black" />
+                                            </div>
+                                            <div class="product-details">
+                                                <p>{{product.name}}</p>
+                                                <p><b>Rs.{{product.price}}</b></p>
+                                            </div>
+                                            <div class="product-action">
+
+                                                <div class="quantity-controls">
+                                                    <p-button [outlined]="true" (click)="increment(product)"
+                                                        [style]="{color: 'black', border:'black'}"
+                                                        icon="pi pi-plus-circle" />
+                                                    <p class="quantity-text">{{product.quantity}}</p>
+                                                    <p-button [outlined]="true" (click)="decrement(product)"
+                                                        [style]="{color: 'black', border:'black'}"
+                                                        icon="pi pi-minus-circle" />
+                                                </div>
+
+                                            </div>
+                                            <div class="product-action">
+                                                <p-button (click)="getSelectedProduct(product)"
+                                                    [style]="{backgroundColor: 'black', border:'black'}"
+                                                    icon="pi pi-shopping-cart" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    }
+                                </div>
+
+                            </p-tabpanel>
+                            <p-tabpanel value="1">
+                                <div class="product-container">
+
+                                    @for (product of milkCoffee; track $index){
+                                    <div class="item-card">
+                                        <div>
+                                            <div class="image-div">
+                                                <img [src]="product.image" [alt]="product.name" class="img-black" />
+                                            </div>
+                                            <div class="product-details">
+                                                <p>{{product.name}}</p>
+                                                <p><b>Rs.{{product.price}}</b></p>
+                                            </div>
+                                            <div class="product-action">
+
+                                                <div class="quantity-controls">
+                                                    <p-button [outlined]="true" (click)="increment(product)"
+                                                        [style]="{color: 'black', border:'black'}"
+                                                        icon="pi pi-plus-circle" />
+                                                    <p class="quantity-text">{{product.quantity}}</p>
+                                                    <p-button [outlined]="true" (click)="decrement(product)"
+                                                        [style]="{color: 'black', border:'black'}"
+                                                        icon="pi pi-minus-circle" />
+                                                </div>
+
+                                            </div>
+                                            <div class="product-action">
+                                                <p-button (click)="getSelectedProduct(product)"
+                                                    [style]="{backgroundColor: 'black', border:'black'}"
+                                                    icon="pi pi-shopping-cart" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    }
+                                </div>
+                            </p-tabpanel>
+                            <p-tabpanel value="2">
+                                <div class="product-container">
+
+                                    @for (product of icedCoffee; track $index){
+                                    <div class="item-card">
+                                        <div>
+                                            <div class="image-div">
+                                                <img [src]="product.image" [alt]="product.name" class="img-black" />
+                                            </div>
+                                            <div class="product-details">
+                                                <p>{{product.name}}</p>
+                                                <p><b>Rs.{{product.price}}</b></p>
+                                            </div>
+                                            <div class="product-action">
+
+                                                <div class="quantity-controls">
+                                                    <p-button [outlined]="true" (click)="increment(product)"
+                                                        [style]="{color: 'black', border:'black'}"
+                                                        icon="pi pi-plus-circle" />
+                                                    <p class="quantity-text">{{product.quantity}}</p>
+                                                    <p-button [outlined]="true" (click)="decrement(product)"
+                                                        [style]="{color: 'black', border:'black'}"
+                                                        icon="pi pi-minus-circle" />
+                                                </div>
+
+
+                                            </div>
+                                            <div class="product-action">
+                                                <p-button (click)="getSelectedProduct(product)"
+                                                    [style]="{backgroundColor: 'black', border:'black'}"
+                                                    icon="pi pi-shopping-cart" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    }
+                                </div>
+                            </p-tabpanel>
+                            <p-tabpanel value="3">
+                                <p class="m-0">
+                                    Manual Coffee
+                                </p>
+                            </p-tabpanel>
+                            <p-tabpanel value="4">
+                                <p class="m-0">
+                                    Non Coffee
+                                </p>
+                            </p-tabpanel>
+                        </p-tabpanels>
+                    </p-tabs>
+                </div>
+            </p-fieldset>
+
+
+        </div>
+
+    </div>
+
+    <div class="total-div">
+
+        <p-fieldset legend="B.O.T - K.O.T" [style]="{width: '100%', height:'100%'}">
+            <h3>Selected Table: {{ selectedTable?.name }}</h3>
+            <p-fieldset legend="Products">
+                @if (selectedProducts?.length){
+                @for (selectedItem of selectedProducts; track $index){
+
+                <div class="selected-item">
+                    <p-avatar [image]="selectedItem.image" size="normal" shape="circle" />
+                    <b>{{selectedItem.name}}</b>
+                    <b>{{selectedItem.newTotal}}</b>
+                    <b>{{selectedItem.quantity}}</b>
+
+
+                </div>
+                }
+                }@else{
+                <div [style]="{display: 'flex', justifyContent:'center'}">
+                    <i [style]="{fontSize: '12px'}">*Product Not Selected*</i>
+                </div>
+                }
+            </p-fieldset>
+            <div class="total-price">
+                <b>Total Price : {{grandTotal}}</b>
+            </div>
+
+            <p-fieldset legend="Payment Method">
+                <p-select [options]="paymentMethod" [(ngModel)]="selectedPaymentMethod" optionLabel="name" placeholder="Select Payment"
+                    class="w-full md:w-56" />
+            </p-fieldset>
+
+            <div class="placeorder-div">
+                <p-button [style]="{backgroundColor: 'black', border:'black'}" (click)="placeOrder()"
+                    label="Place Order" [raised]="true" />
+
+            </div>
+        </p-fieldset>
+
+
+
+    </div>
+
+
+
+</div>
