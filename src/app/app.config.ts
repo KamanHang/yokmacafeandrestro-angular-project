@@ -7,17 +7,20 @@ import Lara from '@primeng/themes/lara';
 import Material from '@primeng/themes/material';
 import Nora from '@primeng/themes/nora';
 import { providePrimeNG } from 'primeng/config';
+import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideAnimationsAsync(),
     providePrimeNG({
       theme: {
-              preset: Lara
-            }
-        }),
-    provideZoneChangeDetection({ eventCoalescing: true }), 
-    provideRouter(routes)
-    
+        preset: Lara
+      }
+    }),
+    provideHttpClient(),
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes),
+
+
   ]
 };

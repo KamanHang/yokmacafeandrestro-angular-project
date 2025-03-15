@@ -5,3 +5,25 @@
     background-color: color-mix(in srgb, var(--p-surface-50) calc(100%* var(--tw-bg-opacity, 1)), transparent);
 
 }
+
+
+.filter-table{
+    display: flex;
+    justify-content: end;
+
+    margin-top: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+
+
+    
+}   
+
+.btn-class{
+    outline-color: black;
+    color: black;
+}
+
+p-button{
+    margin: 1rem;
+}

@@ -1,5 +1,7 @@
 <div class="main-place-order-div">
     <p-toast position="top-center" key="bl" />
+    <p-toast position="bottom-right" key="br" />
+
 
     <div class="order-div">
 
@@ -182,10 +184,10 @@
                 <b>Total Price : {{grandTotal}}</b>
             </div>
 
-            <p-fieldset legend="Payment Method">
+            <!-- <p-fieldset legend="Payment Method">
                 <p-select [options]="paymentMethod" [(ngModel)]="selectedPaymentMethod" optionLabel="name" placeholder="Select Payment"
                     class="w-full md:w-56" />
-            </p-fieldset>
+            </p-fieldset> -->
 
             <div class="placeorder-div">
                 <p-button [style]="{backgroundColor: 'black', border:'black'}" (click)="placeOrder()"

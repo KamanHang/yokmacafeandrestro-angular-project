@@ -1,3 +1,52 @@
-<div class="main-view-order-div">
-    <h1>View Order Woks</h1>
+<div class="card">
+    <div class="filter-table">
+        <p-overlaybadge [value]="numberTabOne()" severity="danger">
+            <p-button class="btn-class" (click)="filterTable('Table 1')" [style]="{backgroundColor: 'black', border:'black'}" label="Table 1" />
+        </p-overlaybadge>
+
+        <p-overlaybadge [value]="numberTabTwo()" severity="danger">
+            <p-button class="btn-class" (click)="filterTable('Table 2')" [style]="{backgroundColor: 'black', border:'black'}" label="Table 2" />
+
+        </p-overlaybadge>
+
+        <p-overlaybadge [value]="numberTabThree()" severity="danger">
+            <p-button class="btn-class" (click)="filterTable('Table 3')" [style]="{backgroundColor: 'black', border:'black'}" label="Table 3" />
+
+        </p-overlaybadge>
+
+        <p-overlaybadge [value]="numberTabFour()" severity="danger">
+            <p-button class="btn-class" (click)="filterTable('Table 4')" [style]="{backgroundColor: 'black', border:'black'}" label="Table 4" />
+
+        </p-overlaybadge>
+
+        <p-overlaybadge [value]="numberTabOutTab()" severity="danger">
+            <p-button class="btn-class" (click)="filterTable('Outside Table')" [style]="{backgroundColor: 'black', border:'black'}" label="Outside Table"  />
+        </p-overlaybadge>
+    </div>
+    <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template #header>
+            <tr>
+                <th>Table Name</th>
+                <th>Order ID</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Rate</th>
+                <th>Total</th>
+                <th>Order Item Number</th>
+            </tr>
+        </ng-template>
+        <ng-template #body let-product>
+            <tr>
+                <td>{{ product.table_name }}</td>
+                <td>{{ product.order_id }}</td>
+                <td>{{ product.product_name }}</td>
+                <td>{{ product.quantity }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.total }}</td>
+                <td>{{ product.order_items_id }}</td>
+             
+
+            </tr>
+        </ng-template>
+    </p-table>
 </div>

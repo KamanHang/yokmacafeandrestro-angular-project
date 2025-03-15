@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { FieldsetModule } from 'primeng/fieldset';
@@ -13,6 +13,7 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
 import { ToastModule } from 'primeng/toast';
 import { Ripple } from 'primeng/ripple';
 import { MessageService } from 'primeng/api';
+import { HttpClient } from '@angular/common/http';
 
 interface Table {
   name: string;
@@ -76,7 +77,7 @@ interface SelectedProduct {
 }
 
 
-interface Order{
+interface Order {
   tableName: string;
   orderList: object;
   totalBill: number;
@@ -92,6 +93,9 @@ interface Order{
   providers: [MessageService]
 })
 export class PlaceorderComponent {
+
+  http = inject(HttpClient)
+
   value: number = 10;
   tables: Table[] | undefined;
   selectedTable: Table | undefined;
@@ -123,23 +127,33 @@ export class PlaceorderComponent {
   constructor(private messageService: MessageService) { }
 
   showMessage() {
-    this.messageService.add({ severity: 'error', summary: 'Info!',  detail: 'Select at least 1 quantity', key: 'bl', life: 3000 });
+    this.messageService.add({ severity: 'error', summary: 'Info!', detail: 'Select at least 1 quantity', key: 'bl', life: 3000 });
   }
 
-  
+
   showEmptyMessage() {
-    this.messageService.add({ severity: 'error', summary: 'Info!',  detail: 'Fill all fields', key: 'bl', life: 3000 });
+    this.messageService.add({ severity: 'error', summary: 'Info!', detail: 'Fill all fields', key: 'bl', life: 3000 });
   }
+
+  placeOrderSuccessMessage() {
+    this.messageService.add({ severity: 'success', summary: 'Order Status', detail: 'Order Placed Successfully', key: 'br', life: 3000 });
+  }
+
+  placeOrderErrorMessage() {
+    this.messageService.add({ severity: 'danger', summary: 'Order Status', detail: 'Order Place Failed', key: 'br', life: 3000 });
+  }
+
+
 
 
 
   ngOnInit() {
 
-    this.paymentMethod = [
-      {name: 'Cash'},
-      {name: 'QR'},
+    // this.paymentMethod = [
+    //   {name: 'Cash'},
+    //   {name: 'QR'},
 
-    ]
+    // ]
     this.tables = [
       { name: 'Table 1', code: 'TAB_ONE' },
       { name: 'Table 2', code: 'TAB_TWO' },
@@ -248,20 +262,30 @@ export class PlaceorderComponent {
 
   placeOrder() {
 
-    if(!this.selectedTable?.name || !this.selectedProducts || !this.grandTotal || !this.selectedPaymentMethod?.name ){
+    if (!this.selectedTable?.name || !this.selectedProducts || !this.grandTotal) {
       this.showEmptyMessage();
       return
     }
     const order = {
-        tableName: this.selectedTable?.name,
-        products: this.selectedProducts,
-        total: this.grandTotal,
-        paymentMethod: this.selectedPaymentMethod?.name
+      tableName: this.selectedTable?.name,
+      products: this.selectedProducts,
+      total: this.grandTotal,
+      // paymentMethod: this.selectedPaymentMethod?.name
     };
+    const url = "http://localhost:4000/placeorder"
+    this.http.post(url, order).subscribe((res: any) => {
+      if (res.message = "Order placed successfully") {
+        this.placeOrderSuccessMessage();
+      }
+      else {
+        this.placeOrderErrorMessage();
+      }
+    })
+
 
 
     console.log("Order added:", order);
-}
+  }
 
 
 
